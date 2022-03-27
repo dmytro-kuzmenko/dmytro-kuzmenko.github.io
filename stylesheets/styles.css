@@ -118,10 +118,11 @@ header {
 }
 
 section {
-  width:1050px;
+  width:800px;
   float:right;
   padding-bottom:50px;
-  /*padding-left:150px;*/
+  /*padding-left:300px;*/
+  padding-right:300px;
   padding-top:50px;
 }
 
