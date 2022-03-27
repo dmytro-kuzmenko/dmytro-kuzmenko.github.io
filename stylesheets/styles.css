@@ -111,14 +111,14 @@ img {
 header {
   /*margin-top:100px;*/
   /*background-color: #996633;*/
-  width:300px;
+  width:200px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
 section {
-  width:1000px;
+  width:850px;
   float:right;
   padding-bottom:50px;
   /*padding-left:150px;*/
@@ -137,7 +137,7 @@ hr {
 }
 
 footer {
-  width:300px;
+  width:200px;
   float:left;
   position: fixed;
   margin-top:500px;
