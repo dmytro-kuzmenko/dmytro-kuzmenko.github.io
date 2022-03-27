@@ -60,7 +60,7 @@ a:hover small {
 }
 
 .wrapper {
-  width:1020px;
+  width:1440px;
   margin: auto;
 }
 
@@ -111,7 +111,7 @@ img {
 header {
   /*margin-top:100px;*/
   /*background-color: #996633;*/
-  width:200px;
+  width:300px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -137,7 +137,7 @@ hr {
 }
 
 footer {
-  width:200px;
+  width:300px;
   float:left;
   position: fixed;
   margin-top:500px;
