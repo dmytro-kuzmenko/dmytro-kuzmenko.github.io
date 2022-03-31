@@ -1,5 +1,5 @@
 body {
-  background-repeat: no-repeat;
+  /*background-repeat: no-repeat;*/
   padding:50px;
   font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color:#595959;
@@ -78,7 +78,7 @@ code, pre {
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;
+  /*background: #f8f8f8;*/
   border-radius:5px;
   border:1px solid #e5e5e5;
   overflow-x: auto;
@@ -118,6 +118,8 @@ header {
 }
 
 section {
+  /*background-image: url('./files/background.jpeg');*/
+  opacity: 0.75;
   width:800px;
   float:right;
   padding-bottom:50px;
@@ -132,7 +134,7 @@ small {
 
 hr {
   border:0;
-  background:#e5e5e5;
+  /*background:#e5e5e5;*/
   height:1px;
   margin:0 0 20px;
 }
