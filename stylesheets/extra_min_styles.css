@@ -20,7 +20,7 @@ html {
 body
 {
   /*background-color: #fff;*/
-  background-image: url('./files/background.jpeg');
+  background-image: url('../files/background.jpeg');
   background-repeat: no-repeat;
   padding:50px;
   font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
