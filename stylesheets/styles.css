@@ -30,7 +30,7 @@ h2 {
 }
 
 h2 title {
-  color:#dba651;
+  color:#199444;
   font-weight: 500;
 }
 h3, h4, h5, h6 {
@@ -39,13 +39,13 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#dba651;
+  color:#199444;
   text-decoration:none;
 }
 
 
 a:hover {
-  color:#050505;
+  color:#3972d4;
 }
 
 a small {
@@ -160,7 +160,7 @@ footer {
 }
 
 .button:hover {
-  color:#050505;
+  color:#3972d4;
 }
 
 
