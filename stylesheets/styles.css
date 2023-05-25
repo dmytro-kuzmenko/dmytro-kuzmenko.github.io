@@ -30,7 +30,7 @@ h2 {
 }
 
 h2 title {
-  color:#199444;
+  color:#57317a; /* main */
   font-weight: 500;
 }
 h3, h4, h5, h6 {
@@ -39,7 +39,7 @@ h3, h4, h5, h6 {
 }
 
 a {
-  color:#199444;
+  color:#57317a; /* main */
   text-decoration:none;
 }
 
