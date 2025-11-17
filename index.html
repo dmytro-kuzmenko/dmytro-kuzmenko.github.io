@@ -470,9 +470,15 @@
         </small>
       </p>
       <!-- ClustrMaps -->
-      <script type="text/javascript" id="clustrmaps"
-        src="//clustrmaps.com/map_v2.js?d=UIBuMoJypv6RhvyX83fQY2uOxsmWJhndMdkeZEhgblY&cl=ffffff&w=60&h=30">
-      </script>
+      <script>
+        if (!localStorage.getItem("excludeTracking")) {
+          var s = document.createElement("script");
+          s.type = "text/javascript";
+          s.id = "clustrmaps";
+          s.src = "//clustrmaps.com/map_v2.js?d=UIBuMoJypv6RhvyX83fQY2uOxsmWJhndMdkeZEhgblY&cl=ffffff&w=60&h=30";
+          document.head.appendChild(s);
+        }
+        </script>
     </footer>
   </div>
   
