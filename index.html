@@ -224,6 +224,28 @@
       font-size: 13px;
     }
 
+    .bib-box {
+      display: none;
+      margin-top: 0.6rem;
+      padding: 0.75rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      background: #fafafa;
+      font-size: 0.85rem;
+      max-width: 100%;
+    }
+
+    .bib-box pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .pill {
+      cursor: pointer;
+    }
+
+
     /* Responsive */
     @media (max-width: 820px){
       .hero{ grid-template-columns: 1fr; }
@@ -387,7 +409,35 @@
             </div>
             <div class="linkbar">
                 <a class="pill" href="https://arxiv.org/abs/2507.01823"><i class="fa-regular fa-file-lines"></i> arXiv</a>
-                <!-- TODO: PDF / code / bibtex -->
+                <a class="pill" href="https://github.com/dmytro-kuzmenko/td-mpc-opt">
+                  <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                
+                <a class="pill bib-toggle" data-bib-id="bib-tdmpc">
+                  <i class="fa-solid fa-quote-right"></i> Bib
+                </a>
+
+                <div id="bib-tdmpc" class="bib-box">
+                <pre>@misc{kuzmenko2025tdmpcoptdistillingmodelbasedmultitask,
+                      title={TD-MPC-Opt: Distilling Model-Based Multi-Task Reinforcement Learning Agents}, 
+                      author={Dmytro Kuzmenko and Nadiya Shvai},
+                      year={2025},
+                      eprint={2507.01823},
+                      archivePrefix={arXiv},
+                      primaryClass={cs.LG},
+                      url={https://arxiv.org/abs/2507.01823}, 
+                }</pre>
+                </div>
+
+                <script>
+                document.querySelectorAll(".bib-toggle").forEach(btn => {
+                  btn.addEventListener("click", () => {
+                    const box = document.getElementById(btn.dataset.bibId);
+                    box.style.display = box.style.display === "block" ? "none" : "block";
+                  });
+                });
+                </script>
+                <!-- TODO: PDF / bibtex -->
             </div>
             </div>
         </div>
@@ -408,6 +458,27 @@
             <div class="linkbar">
                 <a class="pill" href="https://dl.acm.org/doi/10.5555/3709347.3743949"><i class="fa-solid fa-link"></i> ACM DL</a>
                 <a class="pill" href="https://arxiv.org/abs/2501.05329"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+
+                <a class="pill bib-toggle" data-bib-id="bib-aamas">
+                  <i class="fa-solid fa-quote-right"></i> Bib
+                </a>
+
+                <div id="bib-aamas" class="bib-box">
+                <pre>@inproceedings{10.5555/3709347.3743949,
+                  author = {Kuzmenko, Dmytro and Shvai, Nadiya},
+                  title = {Knowledge Transfer in Model-Based Reinforcement Learning Agents for Efficient Multi-Task Learning},
+                  year = {2025},
+                  isbn = {9798400714269},
+                  publisher = {International Foundation for Autonomous Agents and Multiagent Systems},
+                  address = {Richland, SC},
+                  booktitle = {Proceedings of the 24th International Conference on Autonomous Agents and Multiagent Systems},
+                  pages = {2597–2599},
+                  numpages = {3},
+                  keywords = {efficient rl agents, knowledge distillation, model compression, model-based reinforcement learning, multi-task learning},
+                  location = {Detroit, MI, USA},
+                  series = {AAMAS '25}
+                }</pre>
+                </div>
                 <!-- TODO: PDF / code / bibtex -->
             </div>
             </div>
@@ -523,5 +594,33 @@
   <!-- JavaScript -->
   <script src="javascripts/scale.fix.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
+
+  <script>
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".bib-toggle");
+    if (!btn) return;
+
+    // If the publication card (or parent) is a link, stop navigation
+    e.preventDefault();
+    e.stopPropagation();
+
+    const id = btn.dataset.bibId;
+    console.log("bib click:", id, btn);
+
+    const box = document.getElementById(id);
+    console.log("found box:", box);
+
+    if (!box) return;
+
+    // (optional) close others
+    document.querySelectorAll(".bib-box").forEach(b => {
+      if (b !== box) b.style.display = "none";
+    });
+
+    box.style.display = (box.style.display === "block") ? "none" : "block";
+  });
+  </script>
+
+
 </body>
 </html>
