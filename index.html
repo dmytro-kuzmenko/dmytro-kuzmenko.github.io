@@ -1,492 +1,510 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <title>Dmytro Kuzmenko's Portfolio</title>
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- External CSS -->
-  <!-- <link rel="stylesheet" href="stylesheets/styles.css"> -->
-  <!-- <link rel="stylesheet" href="stylesheets/extra_min_styles.css"> -->
-  
-  <!-- Google Fonts: Open Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dmytro Kuzmenko</title>
 
-  <link rel="stylesheet" href="stylesheets/css/academicons.css"/>
-  <link rel="stylesheet" href="stylesheets/css/font-awesome.css"/>
-  <link rel="stylesheet" href="stylesheets/css/academicons.min.css"/>
-  <link rel="stylesheet" href="stylesheets/style-svg.html">
+  <!-- Fonts / Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  
-  <!-- Custom Inline Styles to Override External CSS -->
+  <!-- Favicon (TODO: replace if you want) -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
   <style>
-    /* Global reset for margins/padding, set base font & link color */
-    * {
-      margin: 0; 
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --text: #111;
+      --muted: #444;
+      --faint: #666;
+      --line: #e7e7e7;
+      --bg: #fff;
+      --soft: #fafafa;
+      --accent: #0b5fff;
+      --accent2: #0a3fb8;
+      --maxw: 980px;
+      --radius: 10px;
     }
-    body {
-      font-family: 'Open Sans', sans-serif !important;
-      font-size: 16px !important; /* unified font size */
-      color: #333;
-      background: url("./background.jpeg") no-repeat center center fixed;
-      background-size: cover;
+    *{ box-sizing: border-box; margin:0; padding:0; }
+    body{
+      font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
     }
-    a {
-      color: #007ACC !important; /* color blue */
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ color: var(--accent2); text-decoration: underline; }
+
+    /* Navbar */
+    .navbar{
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-inner{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      gap: 12px;
+    }
+    .nav-left a{
+      color: var(--text);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.2px;
       text-decoration: none;
     }
-    a:hover {
-      color: #005F9E !important; /* slightly darker on hover */
-    }
-
-    /* Wrapper with white background */
-    .wrapper {
-      width: 100%;
-      max-width: 1250px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-    }
-
-    /* Two-column layout */
-    .content-container {
+    .nav-right{
       display: flex;
       flex-wrap: wrap;
-      align-items: flex-start;
+      gap: 12px;
+      align-items: center;
+      justify-content: flex-end;
     }
-    .left-column {
-      flex: 0 0 250px;
-      top: 60px;
-      margin-right: 40px;
-      position: sticky;
-      text-align: center;
+    .nav-right a{
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 8px;
     }
-    .right-column {
-      flex: 1;
-      min-width: 300px;
-      padding-right: 15%;
-      box-sizing: border-box;
-      /* text-align: justify; */
-    }
-
-    /* Portrait & Name */
-    .portrait {
-      width: 300px !important;
-      border-radius: 50% !important;
-      display: block;
-      margin: 0 auto 15px auto;
-    }
-    .name-title {
-      margin-bottom: 20px;
-      font-size: 32px;
-      font-weight: 600;
+    .nav-right a:hover{
+      background: var(--soft);
+      color: var(--text);
+      text-decoration: none;
     }
 
-    /* Social links */
-    .socials {
-      text-align: left;
-      margin-left: 50px;
-      margin-bottom: 30px;
+    /* Layout */
+    .container{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 18px 14px 40px;
     }
-    .socials a {
-      display: block;
-      margin: 6px 0;
-      font-size: 22px;
-      color: #333;
+    .section{
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
     }
-    .socials a i {
-      margin-right: 8px;
-      font-size: 20px;
-      vertical-align: middle;
-    }
-
-    /* Bio section */
-    .bio {
-      margin-top: 100px;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    /* Headings for sections */
-    h3.section-heading {
-      margin: 30px 0 15px; /* vertical spacing for clarity */
-      font-size: 22px;
-      color: #007ACC;
-      font-weight: 600;
-    }
-
-    /* Recent News */
-    .recent-news ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      line-height: 1.5;
-    }
-    .recent-news li {
+    .section:last-child{ border-bottom: none; }
+    h1{
+      font-size: 30px;
+      line-height: 1.15;
       margin-bottom: 6px;
     }
+    h2{
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    p{ margin: 10px 0; color: var(--muted); }
+    .small{ color: var(--faint); font-size: 14px; }
 
-    /* Highlights */
-    .highlights table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Hero */
+    .hero{
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 18px;
+      align-items: start;
     }
-    .highlights tr {
-      border-bottom: 1px solid #e5e5e5;
+    .pfp{
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: var(--soft);
     }
-    .highlights td {
-      padding: 10px;
-      vertical-align: top;
+    .hero-meta{
+      display: grid;
+      gap: 6px;
     }
-    .workPicture {
-      width: 150px;
-      border-radius: 5px;
+    .role{
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .buttons{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      user-select: none;
+    }
+    .btn:hover{
+      background: var(--soft);
+      text-decoration: none;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-	  .content-container {
-	    justify-content: center;
-	    padding: 0 20px;
-	  }
-	  
-	  .left-column {
-	    flex: 0 0 250px;
-	    margin-right: 0;
-	    position: static;
-	    text-align: center;
-	    margin-bottom: 30px;
-	  }
-	  
-	  .right-column {
-	    padding-right: 20px;
-	    width: 100%;
-	  }
-	}
+    /* Lists */
+    ul{ margin: 10px 0 0 18px; }
+    li{ margin: 6px 0; color: var(--muted); }
+
+    /* Publications table-ish layout */
+    .pubs{
+      display: grid;
+      gap: 14px;
+    }
+    .pub{
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    .pub img{
+      width: 170px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+    .pub-title{
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+    .pub-authors{
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .pub-venue{
+      font-size: 14px;
+      color: var(--faint);
+      margin-bottom: 8px;
+    }
+    .linkbar{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .pill:hover{ text-decoration: none; background: #f3f3f3; }
 
     /* Footer */
-    footer {
+    footer{
+      padding-top: 24px;
       text-align: center;
-      padding-top: 20px;
-      margin-top: 20px;
-      border-top: 1px solid #ccc;
-    }
-    footer small {
-      line-height: 1.4;
+      color: var(--faint);
+      font-size: 13px;
     }
 
-    /* Responsive: stack columns on narrow screens */
-    @media (max-width: 768px) {
-      .content-container {
-        flex-direction: column;
-      }
-      .left-column {
-        margin-right: 0;
-        margin-bottom: 20px;
-      }
+    /* Responsive */
+    @media (max-width: 820px){
+      .hero{ grid-template-columns: 1fr; }
+      .pfp{ width: 140px; height: 140px; }
+      .pub{ grid-template-columns: 1fr; }
+      .pub img{ width: 100%; height: 180px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="wrapper">
-    <div class="content-container">
-      <!-- LEFT COLUMN: Portrait, Name, Socials -->
-      <div class="left-column">
-        <img src="./files/pfpn2.jpg" alt="Portrait" class="portrait">
-        <div class="name-title">Dmytro Kuzmenko</div>
-        <div class="socials">
-          <a href="mailto:dmytro.o.kuzmenko@gmail.com">
-            <i class="fa fa-envelope"></i> Email
-          </a>
-          <a href="https://x.com/kuzmenko_dmytro">
-            <i class="fa fa-twitter"></i> Twitter/X
-          </a>
-          <a href="https://www.linkedin.com/in/dmytrookuzmenko/">
-            <i class="fa fa-linkedin"></i> LinkedIn
-          </a>
-          <a href="https://dmytro-kuzmenko.medium.com">
-            <i class="fa fa-medium"></i> Medium
-          </a>
-          <a href="https://scholar.google.com/citations?user=8gFMCU0AAAAJ&hl=en">
-            <i class="ai ai-google-scholar"></i> Google Scholar
-          </a>
-          <a href="https://github.com/dmytro-kuzmenko">
-            <i class="fa fa-github"></i> GitHub
-          </a>
-          <a href="https://www.researchgate.net/profile/Dmytro-Kuzmenko-3">
-            <i class="ai ai-researchgate"></i> ResearchGate
-          </a>
-        </div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="nav-left">
+        <a href="#about">Dmytro Kuzmenko</a>
       </div>
-      <!-- RIGHT COLUMN: Bio, Recent News, Highlights -->
-      <div class="right-column">
-        
-        <!-- Bio Section -->
-        <section class="bio">
-          <p>
-            I'm an AI and robotics researcher focused on building efficient, adaptive systems at the intersection of reinforcement learning, robotics, foundation models, and human-robot interaction. As Head of AI at OnlyMonster, I lead the development of generative and conversational AI products.
-         </p>
-          <br>
+      <div class="nav-right">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#service">Service</a>
+        <a href="#teaching">Teaching</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- ABOUT / HERO -->
+    <section class="section" id="about">
+      <div class="hero">
+        <!-- TODO: replace image path -->
+        <img class="pfp" src="files/pfpn2.jpg" alt="Portrait of Dmytro Kuzmenko" />
+
+        <div class="hero-meta">
+          <h1>Dmytro Kuzmenko</h1>
+          <div class="role">
+            Head of AI @ OnlyMonster · PhD Candidate @ NaUKMA · Torino, Italy
+          </div>
 
           <p>
-          	I am pursuing a PhD in Computer Science at NaUKMA, where my research centers on optimizing perception and control models. I also explore human-robot interaction to make AI systems more intuitive and responsive in real-world settings.
+            I am an AI and robotics researcher focused on building efficient, adaptive systems at the intersection of reinforcement learning, robotics, foundation models, and human-robot interaction. As Head of AI at OnlyMonster, I also lead the development of generative and conversational AI products.
+         </p>
+
+          <p>
+            I am pursuing a PhD in Computer Science at NaUKMA, where I focus on resource-aware embodied intelligence through optimizing data, compute, and trust. In parallel, I work on human-robot interaction, with the goal of building AI systems that behave robustly, transparently, and in alignment with human expectations in real-world environments.
           </p>
-          <br>
 
           <p>
             In my free time, I play shogi, collect vinyl records, and enjoy experimenting in the kitchen.
           </p>
-          <br>
 
-          <p>
-            The recordings of my talks and classes can be found here:
+          <p class="small">
+            Interests: HRI, embodied AI, efficient RL, multi-task control, world foundation models.
           </p>
-          <br>
 
-          <div class="g-ytsubscribe" data-channelid="UCZ5saX-UqcE216f1YlutgSQ" data-layout="full" data-count="default"></div>
-        </section>
-
-        <!-- Recent News Section -->
-        <section class="recent-news">
-          <h3 class="section-heading">Recent News</h3>
-          <ul>
-            <li>2025-12: My Empathic Ethical Disobedience Gym paper has been accepted to <a href="https://humanrobotinteraction.org/2026/">HRI 2026</a>!</li>
-            <li>2025-09: Gave a <a href="https://youtu.be/qQVtMBNPc3c?si=nkvz8d_8M3NtN9OC">talk</a> on efficient AI in business and joined a <a href="https://youtu.be/7WQlUTi6S2k?si=9nD7w4MGYu9cYVw8">panel</a> at AI & BigData Day '25!</li>
-            <li>2025-06: Published two of my preprints: <a href="https://arxiv.org/abs/2507.01823">TD-MPC-Opt</a> and <a href="https://arxiv.org/abs/2507.01843">MoIRA</a>!</li>
-            <li>2025-06: Gave a talk on my AAMAS work at RL Reading Club at <a href="https://www.southampton.ac.uk/">University of Southampton</a>!</li>
-            <li>2025-05: Presented my <a href="https://www.researchgate.net/publication/391942333_Knowledge_Transfer_in_Model-Based_Reinforcement_Learning_Agents_for_Efficient_Multi-Task_Learning">poster</a> on knowledge-based MBRL distillation at AAMAS 2025!</li>
-          	<li>2025-05: My <a href="https://dou.ua/forums/topic/53805/">article on LLM post-training</a> has been published on DOU!</li>
-          	<!-- <li>2025-03: Gave a <a href="https://youtu.be/BHFlIAVfuq4?si=wrrQzFY9r-SZ-IgB">talk on VLAs</a> and participated in a <a href="https://youtu.be/owH_Rcc35S8?si=NUfuijZsUt0fmh83">panel</a> at <a href="https://aiconf.com.ua/kyiv">AI & BigData Day 2025</a>!</li> -->
-          	<!-- <li>2025-02: Spoke about my research in robotics on the <a href="https://youtu.be/AJJ-cvR33kY?si=YYXQPcWNRsy31G5j">AI HOUSE Podcast</a>!</li> -->
-            <!-- <li>2025-02: Code for TD-MPC-Opt available at <a href="https://github.com/dmytro-kuzmenko/td-mpc-opt">GitHub</a>!</li> -->
-            <!-- <li>2024-12: Our paper on Knowledge Transfer accepted to <a href="https://aamas2025.org/">AAMAS 2025</a> as an extended abstract!</li> -->
-<!--             <li>2024-12: I spoke at AI & blockchain panel at <a href="https://unit.city/en/events/kyiv-blockchain-day/">Kyiv Blockchain Day 2024</a>!</li> -->
-<!--             <li>2024-11: I contributed AI cybersecurity module for <a href="https://google.brandlive.com/AI-for-productivity/uk/home">Google's AI for Productivity</a>!</li> -->
-            <!-- <li>2024-11: Presented <a href="https://www.youtube.com/watch?v=fvNlXFZ_3NA">SOTA approaches in robotics</a> at <a href="https://aiconf.com.ua/kyiv">Kyiv AI & BigData 2024</a>!</li> -->
-<!--             <li>2024-10: I joined <a href="https://aihouse.org.ua/en/about-us/">AI HOUSE</a> as a mentor!</li>
-            <li>2024-08: I have given my first offline talk on <a href="https://docs.google.com/presentation/d/1LYDd7hMIVBximoxedfvHx0xt0S8Ed2k8sbcGBfwDyNE/edit?usp=sharing">robotics & RL</a> at <a href="https://kse.ua/">KSE</a>!</li>
-            <li>2024-07: I mentored teams at <a href="https://aihouse.org.ua/en/event/ai-startup-camp-2024/">AI HOUSE Startup Camp</a>!</li>
-            <li>2024-07: Our esearch poster was accepted at <a href="https://robotics.utoronto.ca/toronto-robotics-conference-2024/">Toronto Robotics Conference 2024</a>!</li>
-            <li>2024-07: Our object goal navigation paper accepted at <a href="https://icteri.org/icteri-2024/program-2024/">ICTERI 2024 Poster track</a>!</li>
-            <li>2024-07: I attended AI & Creativity Summer School in Bologna!</li>
-            <li>2024-07: I spoker at a <a href="https://tally.so/r/3xQl8y">"From Junior to Senior: How to Build an Effective IT Career"</a> panel discussion!</li>
-            <li>2024-06: The <a href="https://arxiv.org/abs/2406.03015">preprint</a> of our robotic goal navigation paper is published!</li>
-            <li>2023-10: I started my PhD at NaUKMA advised by <a href="https://scholar.google.com/citations?user=jfjZfnoAAAAJ&hl=en">Dr. Nadiya Shvai</a>!</li> -->
-          </ul>
-        </section>
-
-        <!-- Highlights Section -->
-        <section class="highlights">
-          <h3 class="section-heading">Highlights</h3>
-          <table>
-            <!-- MoIRA preprint -->
-          	<tr>
-              <td><img class="workPicture" src="files/moira.png" alt="moira"></td>
-              <td>
-                <b><a href="https://arxiv.org/abs/2507.01843">My MoIRA preprint is published</a></b><br>
-                <i>2 Jul 2025</i><br>
-                An external modular MoE for multi-task cross-embodiment agentic routing
-              </td>
-            </tr>
-            <!-- AAMAS 2025 poster -->
-          	<tr>
-              <td><img class="workPicture" src="files/aamas_poster.png" alt="aamas 25"></td>
-              <td>
-                <b><a href="https://www.ifaamas.org/Proceedings/aamas2025/">Presented my poster at AAMAS 2025</a></b><br>
-                <i>23 May 2025</i><br>
-                TD-MPC2-based sample-efficient distillation for MT30 
-              </td>
-            </tr>
-          	<!-- ai bigdata 2025 -->
-          	<tr>
-              <td><img class="workPicture" src="files/ai_bigdata_25.jpg" alt="aibigdata 25"></td>
-              <td>
-                <b><a href="https://youtu.be/BHFlIAVfuq4?si=wrrQzFY9r-SZ-IgB">Gave a talk on VLA models at AI & BigData Day 2025</a></b><br>
-                <i>1 Mar 2025</i><br>
-                Talked about systems I and II, latest trends in robotics, and more
-              </td>
-            </tr>
-          	<!-- podcast -->
-          	<!-- <tr>
-              <td><img class="workPicture" src="files/podcast.jpeg" alt="aihouse podcast"></td>
-              <td>
-                <b><a href="https://youtu.be/AJJ-cvR33kY?si=DTAfa_1y1NlSrt2w">Shared my thoughts on robotics in AI HOUSE Podcast</a></b><br>
-                <i>20 Feb 2025</i><br>
-                Went over my latest research and my collab with U of T
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/aamas.png" alt="AAMAS preprint"></td>
-              <td>
-                <b><a href="https://arxiv.org/abs/2501.05329">AAMAS 2025 Extended Abstract Published</a></b><br>
-                <i>9 Jan 2025</i><br>
-                Code for TD-MPC-Opt available on <a href="https://github.com/dmytro-kuzmenko/td-mpc-opt/">GitHub</a>
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/ai_google.png" alt="Google AI for Productivity"></td>
-              <td>
-                <b><a href="https://google.brandlive.com/AI-for-productivity/uk/home">Joined Google's AI for Productivity</a></b><br>
-                <i>13 Nov 2024</i><br>
-                Contributed a module on AI cybersecurity to Google's AI for Productivity course
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/aibig.jpg" alt="Kyiv AI & BigData"></td>
-              <td>
-                <b><a href="https://www.youtube.com/watch?v=fvNlXFZ_3NA">SOTA AI in Robotics</a></b><br>
-                <i>2 Nov 2024</i><br>
-                Discussed SOTA approaches for various robotics tasks at Kyiv AI & BigData 2024
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/icteri.jpg" alt="ICTERI 2024"></td>
-              <td>
-                <b><a href="https://www.researchgate.net/publication/384322776_Balancing_Performance_and_Efficiency_in_Zero-shot_Robotic_Navigation">Poster at ICTERI 2024</a></b><br>
-                <i>24 Sep 2024</i><br>
-                Balancing Performance and Efficiency in Zero-shot Robotic Navigation
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/robotics_meet.png" alt="Robotics Meetup"></td>
-              <td>
-                <b><a href="https://www.youtube.com/watch?v=v4JOcWr-YZIg">Robotics & RL Talk at AI Meetups</a></b><br>
-                <i>31 Aug 2024</i><br>
-                My first robotics talk on RL/IL and VLAs for control at AI Meetups
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/camp.jpg" alt="AI House Camp"></td>
-              <td>
-                <b><a href="https://aihouse.org.ua/en/event/ai-startup-camp-2024/">Joined AI House Startup Camp 2024</a></b><br>
-                <i>25-28 Jul 2024</i><br>
-                Mentored 9 startups teams at a summer AI HOUSE startup camp
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/TRC.JPG" alt="Toronto Robotics Conference"></td>
-              <td>
-                <b><a href="https://robotics.utoronto.ca/toronto-robotics-conference-2024/">Talk at Toronto Robotics Conference 2024</a></b><br>
-                <i>23 Jul 2024</i><br>
-                Presented our semi-supervised learning for human-robot locomotion research
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/summer.JPG" alt="Summer School"></td>
-              <td>
-                <b><a href="https://site.unibo.it/una-europa/en/summer-and-winter-school/summer-school-ai">AI & Creativity Summer School</a></b><br>
-                <i>5-15 Jul 2024</i><br>
-                Explored LLMs, AI regulation, and met many incredible people
-              </td>
-            </tr> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/icteri_preprint.png" alt="Preprint"></td>
-              <td>
-                <b><a href="https://arxiv.org/abs/2406.03015">Published Preprint on Robotic Goal Navigation</a></b><br>
-                <i>5 Jun 2024</i><br>
-                Zero-shot Habitat-Matterport 3D navigation
-              </td> -->
-            <!-- <tr>
-              <td><img class="workPicture" src="files/set2.jpg" alt="SET University"></td>
-              <td>
-                <b><a href="https://www.setuniversity.tech/en/">Started as Adjunct Lecturer at SET University</a></b><br>
-                <i>16 Mar 2024</i><br>
-                Teaching Machine Learning.
-              </td>
-            </tr>
-            <tr> -->
-<!--             </tr>
-              <td><img class="workPicture" src="files/stairnet.jpg" alt="StairNet"></td>
-              <td>
-                <b><a href="https://biomedical-engineering-online.biomedcentral.com/articles/10.1186/s12938-024-01216-0">StairNet in BioMedical Engineering OnLine</a></b><br>
-                <i>15 Feb 2024</i><br>
-                Overview of human-robot stair recognition
-              </td>
-            </tr> -->
-<!--             <tr>
-              <td><img class="workPicture" src="files/rl_comp.png" alt="RL Comp Intro"></td>
-              <td>
-                <b><a href="https://youtu.be/JATcjeLS1Wo?si=NXzIQ0-v8UNm0OAZ">Offline Intro Lecture on Deep RL</a></b><br>
-                <i>27 Jan 2024</i><br>
-                Gave a high-level RL lecture at RL Competition at NaUKMA
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/robosumo.jpg" alt="Robosumo"></td>
-              <td>
-                <b><a href="https://www.youtube.com/live/hodtDH8lxNI?si=yq6TupsVRBDxSIRa">First Student Robotic Sumo Competition</a></b><br>
-                <i>14 Dec 2023</i><br>
-                	Coached a team of students to take bronze in robosumo competition
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/biomed.png" alt="BioMed"></td>
-              <td>
-                <b><a href="https://arxiv.org/abs/2310.20666">StairNet Preprint for BioMedical Engineering OnLine</a></b><br>
-                <i>31 Oct 2023</i><br>
-                Methods for lightweight AI-based visual stair recognition
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/dsua-meetup.jpeg" alt="DS UA Meetup"></td>
-              <td>
-                <b><a href="https://youtu.be/PaQjiOIcxAc">Tech Talk on ExoNet-SSL at DS UA Meetup</a></b><br>
-                <i>20 Jul 2023</i><br>
-                Semi-supervised learning in robotics discussion
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/iros.png" alt="IROS"></td>
-              <td>
-                <b><a href="https://youtu.be/PaQjiOIcxAc">ExoNet-SSL at IROS 2023</a></b><br>
-                <i>29 Jun 2023</i><br>
-                Human-robot interaction and perception research
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/thesis.png" alt="Thesis"></td>
-              <td>
-                <b><a href="https://youtu.be/fF5FfHmUk8A">Defended Master's Thesis on Adversarial Sparsity</a></b><br>
-                <i>12 Jun 2023</i><br>
-                Novel n-Ary hybrid search for robustness
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/poster.png" alt="Poster"></td>
-              <td>
-                <b><a href="https://dmytro-kuzmenko.github.io/files/Kuzmenko_ICAIR.pdf">Poster Accepted at ICAIR 2023</a></b><br>
-                <i>3 Apr 2023</i><br>
-                Semi-supervised learning for human-robot interaction and perception
-              </td>
-            </tr>
-            <tr>
-              <td><img class="workPicture" src="files/csc.png" alt="CSC2431"></td>
-              <td>
-                <b><a href="https://data-team-uhn.github.io/csc2431/">Joined "CSC2431: AI in Medicine" as Instructor</a></b><br>
-                <i>13 Sep 2022</i><br>
-                International course with U of T PhD students
-              </td>
-            </tr> -->
-          </table>
-        </section>
+          <div class="buttons">
+            <a class="btn" href="mailto:dmytro.o.kuzmenko@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=8gFMCU0AAAAJ&hl=en"><i class="fa-brands fa-google-scholar"></i> Scholar</a>
+            <a class="btn" href="https://github.com/dmytro-kuzmenko"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/dmytrookuzmenko/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a class="btn" href="https://x.com/kuzmenko_dmytro"><i class="fa-brands fa-x-twitter"></i> X</a>
+          </div>
+        </div>
+        <div class="g-ytsubscribe" data-channelid="UCZ5saX-UqcE216f1YlutgSQ" data-layout="full" data-count="default"></div>
       </div>
-    </div>
-    
+    </section>
+
+    <!-- NEWS -->
+    <section class="section" id="news">
+      <h2>News</h2>
+        <ul>
+        <li>[Dec 2025]: Empathic Ethical Disobedience Gym accepted to <a href="https://humanrobotinteraction.org/2026/">ACM/IEEE HRI 2026</a>.</li>
+        <li>[Sep 2025]: Gave a <a href="https://youtu.be/qQVtMBNPc3c?si=nkvz8d_8M3NtN9OC">talk</a> and joined a <a href="https://youtu.be/7WQlUTi6S2k?si=wrrQzFY9r-SZ-IgB">panel</a> at AI & BigData Day 2025.</li>
+        <li>[Jul 2025]: Released two preprints: <a href="https://arxiv.org/abs/2507.01843">MoIRA</a> and <a href="https://arxiv.org/abs/2507.01823">TD-MPC-Opt</a>.</li>
+        <li>[Jun 2025]: Invited talk on AAMAS work at the RL Reading Club, <a href="https://www.southampton.ac.uk/">University of Southampton</a>.</li>
+        <li>[May 2025]: Presented a poster on knowledge-based MBRL distillation at AAMAS 2025.</li>
+        <li>[May 2025]: Published an article on LLM post-training on <a href="https://dou.ua/forums/topic/53805/">DOU</a>.</li>
+        <li>[Oct 2023]: Started PhD in Computer Science at NaUKMA, advised by <a href="https://scholar.google.com/citations?user=jfjZfnoAAAAJ&hl=en">Dr. Nadiya Shvai</a>.</li>
+        </ul>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section class="section" id="publications">
+        <h2>Publications</h2>
+        <div class="pubs">
+        
+        <!-- Energy Conservation (Journal, 2025) -->
+        <div class="pub">
+            <img src="files/agenticrl.png" alt="Energy conservation thumbnail" />
+            <div>
+            <div class="pub-title">
+                Energy Conservation for Autonomous Agents Using Reinforcement Learning
+            </div>
+            <div class="pub-authors">
+                V. Beimuk, <b>D. Kuzmenko</b>
+            </div>
+            <div class="pub-venue">
+                NaUKMA Research Papers: Computer Science, 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://doi.org/10.18523/2617-3808.2025.8.68-75"><i class="fa-solid fa-link"></i> DOI</a>
+            </div>
+            </div>
+        </div>
+
+        <!-- Hybrid AI Finance (Journal, 2025) -->
+        <div class="pub">
+            <img src="files/finai.png" alt="Hybrid AI finance thumbnail" />
+            <div>
+            <div class="pub-title">
+                A Hybrid AI Model for Financial Market Prediction
+            </div>
+            <div class="pub-authors">
+                M. Voitishyn, <b>D. Kuzmenko</b>
+            </div>
+            <div class="pub-venue">
+                NaUKMA Research Papers: Computer Science, 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://doi.org/10.18523/2617-3808.2025.8.38-42"><i class="fa-solid fa-link"></i> DOI</a>
+            </div>
+            </div>
+        </div>
+
+        <!-- Preprint: MoIRA -->
+        <div class="pub">
+            <img src="files/moira.png" alt="MoIRA preprint thumbnail" />
+            <div>
+            <div class="pub-title">
+                MoIRA: Modular Instruction Routing Architecture for Multi-Task Robotics
+            </div>
+            <div class="pub-authors">
+                <b>D. Kuzmenko</b>, N. Shvai
+            </div>
+            <div class="pub-venue">
+                Preprint (under review), 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://arxiv.org/abs/2507.01843"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+                <!-- TODO: PDF / code / bibtex -->
+            </div>
+            </div>
+        </div>
+
+        <!-- Preprint: TD-MPC-Opt -->
+        <div class="pub">
+            <img src="files/tdmpcopt.png" alt="TD-MPC-Opt preprint thumbnail" />
+            <div>
+            <div class="pub-title">
+                TD-MPC-Opt — Distillation & Quantization for Efficient Multi-Task Model-Based RL
+            </div>
+            <div class="pub-authors">
+                <b>D. Kuzmenko</b>, N. Shvai
+            </div>
+            <div class="pub-venue">
+                Preprint (under review), 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://arxiv.org/abs/2507.01823"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+                <!-- TODO: PDF / code / bibtex -->
+            </div>
+            </div>
+        </div>
+
+        <!-- AAMAS 2025 -->
+        <div class="pub">
+            <img src="files/aamas.png" alt="AAMAS 2025 thumbnail" />
+            <div>
+            <div class="pub-title">
+                Knowledge Transfer in Model-Based Reinforcement Learning Agents for Efficient Multi-Task Learning
+            </div>
+            <div class="pub-authors">
+                <b>D. Kuzmenko</b>, N. Shvai
+            </div>
+            <div class="pub-venue">
+                International Conference on Autonomous Agents and Multiagent Systems (AAMAS), 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://dl.acm.org/doi/10.5555/3709347.3743949"><i class="fa-solid fa-link"></i> ACM DL</a>
+                <a class="pill" href="https://arxiv.org/abs/2501.05329"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+                <!-- TODO: PDF / code / bibtex -->
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- ICTERI 2024 (published 2025 volume, conference 2024) -->
+        <div class="pub">
+            <img src="files/icteri_preprint.png" alt="ICTERI 2024 thumbnail" />
+            <div>
+            <div class="pub-title">
+                Balancing Performance and Efficiency in Zero-Shot Robotic Navigation
+            </div>
+            <div class="pub-authors">
+                <b>D. Kuzmenko</b>, N. Shvai
+            </div>
+            <div class="pub-venue">
+                ICTERI 2024, Communications in Computer and Information Science (Springer), 2025
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://doi.org/10.1007/978-3-031-81372-6_28"><i class="fa-solid fa-link"></i> DOI</a>
+                <a class="pill" href="https://arxiv.org/abs/2406.03015"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+            </div>
+            </div>
+        </div>
+
+        <!-- StairNet (Journal, 2024) -->
+        <div class="pub">
+            <img src="files/poster.png" alt="StairNet thumbnail" />
+            <div>
+            <div class="pub-title">
+                StairNet: Visual Recognition of Stairs for Human-Robot Locomotion
+            </div>
+            <div class="pub-authors">
+                A. G. Kurbis, <b>D. Kuzmenko</b>, B. Ivanyuk-Skulskiy, A. Mihailidis, B. Laschowski
+            </div>
+            <div class="pub-venue">
+                BioMedical Engineering OnLine, 2024
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://doi.org/10.1186/s12938-024-01216-0"><i class="fa-solid fa-link"></i> DOI</a>
+                <a class="pill" href="https://arxiv.org/abs/2310.20666"><i class="fa-regular fa-file-lines"></i> arXiv</a>
+            </div>
+            </div>
+        </div>
+
+        <!-- IROS 2023 -->
+        <div class="pub">
+            <img src="files/iros.png" alt="IROS 2023 thumbnail" />
+            <div>
+            <div class="pub-title">
+                Efficient Visual Perception of Human–Robot Walking Environments Using Semi-Supervised Learning
+            </div>
+            <div class="pub-authors">
+                <b>D. Kuzmenko</b>, O. Tsepa, A. G. Kurbis, A. Mihailidis, B. Laschowski
+            </div>
+            <div class="pub-venue">
+                IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2023
+            </div>
+            <div class="linkbar">
+                <a class="pill" href="https://doi.org/10.1109/IROS55552.2023.10341654"><i class="fa-solid fa-link"></i> DOI</a>
+                <a class="pill" href="https://www.biorxiv.org/content/10.1101/2023.06.28.546903v1"><i class="fa-regular fa-file-lines"></i> biorXiv</a>
+            </div>
+            </div>
+        </div>
+
+        </div>
+
+    </section>
+
+    <!-- SERVICE -->
+    <section class="section" id="service">
+      <h2>Academic Service</h2>
+      <ul>
+        <li>Reviewer, HRI 2026.</li>
+        <li>Reviewer, Journal of Field Robotics.</li>
+      </ul>
+    </section>
+
+    <!-- TEACHING -->
+    <section class="section" id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        Senior Lecturer, NaUKMA
+        <ul>
+        <li>MSc Reinforcement Learning (Spring '23, '24, '25)</li>
+        <li>MSc Machine Learning (Fall '22, '23; Spring '25)</li>
+        <li>MSc Image Analysis & Computer Vision (Spring '24, '25)</li>
+        <li>MSc NLP Systems (Fall '24, '25)</li>
+        <li>MSc Computer Vision (Fall '22, '23, '24, '25)</li>
+        <li>BSc Machine Learning (Fall '24, '25)</li>
+        <li>BSc Deep Learning for Computer Vision (Spring '24, '25)</li>
+        </ul>
+      </ul>
+    </section>
+
     <footer>
-      <p>
-        <small>
-          Website is based on <a href="https://github.com/orderedlist/minimal">minimal</a>.<br>
-          &copy; Dmytro Kuzmenko 2025
-        </small>
-      </p>
+      <div>© Dmytro Kuzmenko 2025</div>
       <!-- ClustrMaps -->
       <script>
         if (!localStorage.getItem("excludeTracking")) {
@@ -498,8 +516,9 @@
         }
         </script>
     </footer>
-  </div>
-  
+
+  </main>
+
   <!-- JavaScript -->
   <script src="javascripts/scale.fix.js"></script>
   <script src="https://apis.google.com/js/platform.js"></script>
