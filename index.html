@@ -231,17 +231,6 @@
       .pub{ grid-template-columns: 1fr; }
       .pub img{ width: 100%; height: 180px; }
     }
-
-    .about-bio {
-      max-width: 900px;   /* pick your page width */
-      margin: 2rem auto 0;
-    }
-
-    .about-bio p {
-      line-height: 1.6;
-      margin: 0 0 1rem;
-    }
-
   </style>
 </head>
 
@@ -267,9 +256,7 @@
 
     <!-- ABOUT / HERO -->
     <section class="section" id="about">
-
-      <!-- TOP: photo + meta + buttons -->
-      <div class="hero hero-top">
+      <div class="hero">
         <img class="pfp" src="files/pfpn2.jpg" alt="Portrait of Dmytro Kuzmenko" />
 
         <div class="hero-meta">
@@ -286,37 +273,27 @@
             <a class="btn" href="https://x.com/kuzmenko_dmytro"><i class="fa-brands fa-x-twitter"></i> X</a>
           </div>
         </div>
+
       </div>
 
-      <!-- BOTTOM: full-width bio -->
-      <div class="hero hero-bio">
-        <p>
-          I am an AI and robotics researcher focused on building efficient, adaptive systems at the intersection of reinforcement learning, robotics, foundation models, and human-robot interaction.
-          As Head of AI at OnlyMonster, I also lead the development of generative and conversational AI products.
-        </p>
+      <p>
+        I am an AI and robotics researcher focused on building efficient, adaptive systems at the intersection of reinforcement learning, robotics, foundation models, and human-robot interaction. As Head of AI at OnlyMonster, I also lead the development of generative and conversational AI products.
+      </p>
 
-        <p>
-          I am pursuing a PhD in Computer Science at NaUKMA, where I focus on resource-aware embodied intelligence through optimizing data, compute, and trust.
-          In parallel, I work on human-robot interaction, with the goal of building AI systems that behave robustly, transparently, and in alignment with human expectations in real-world environments.
-        </p>
+      <p>
+        I am pursuing a PhD in Computer Science at NaUKMA, where I focus on resource-aware embodied intelligence through optimizing data, compute, and trust. In parallel, I work on human-robot interaction, with the goal of building AI systems that behave robustly, transparently, and in alignment with human expectations in real-world environments.
+      </p>
 
-        <p>
-          In my free time, I play shogi, collect vinyl records, and enjoy experimenting in the kitchen.
-        </p>
+      <p>
+        In my free time, I play shogi, collect vinyl records, and enjoy experimenting in the kitchen.
+      </p>
 
-        <p class="small">
-          Interests: HRI, embodied AI, efficient RL, multi-task control, world foundation models.
-        </p>
+      <p class="small">
+        Interests: HRI, embodied AI, efficient RL, multi-task control, world foundation models.
+      </p>
 
-        <div class="g-ytsubscribe"
-          data-channelid="UCZ5saX-UqcE216f1YlutgSQ"
-          data-layout="full"
-          data-count="default">
-        </div>
-      </div>
-
+      <div class="g-ytsubscribe" data-channelid="UCZ5saX-UqcE216f1YlutgSQ" data-layout="full" data-count="default"></div>
     </section>
-
 
     <!-- NEWS -->
     <section class="section" id="news">
