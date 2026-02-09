@@ -140,6 +140,7 @@
       border: 1px solid var(--line);
       background: var(--bg);
       color: var(--text);
+      font: inherit;
       padding: 8px 10px;
       border-radius: 10px;
       font-size: 14px;
@@ -245,6 +246,21 @@
       cursor: pointer;
     }
 
+    .email-reveal{
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      border: 1px dashed var(--line);
+      border-radius: 10px;
+      background: linear-gradient(120deg, #f9fbff, #ffffff);
+      color: var(--text);
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+    .email-reveal[hidden]{
+      display: none;
+    }
+
 
     /* Responsive */
     @media (max-width: 820px){
@@ -288,12 +304,15 @@
           </div>
 
           <div class="buttons">
-            <a class="btn" href="mailto:dmytro.o.kuzmenko@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+            <button class="btn email-toggle" type="button" aria-controls="email-reveal" aria-expanded="false" data-user="dmytro.o.kuzmenko" data-domain="gmail.com">
+              <i class="fa fa-envelope"></i> Email
+            </button>
             <a class="btn" href="https://scholar.google.com/citations?user=8gFMCU0AAAAJ&hl=en"><i class="fa-brands fa-google-scholar"></i> Scholar</a>
             <a class="btn" href="https://github.com/dmytro-kuzmenko"><i class="fa-brands fa-github"></i> GitHub</a>
             <a class="btn" href="https://www.linkedin.com/in/dmytrookuzmenko/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
             <a class="btn" href="https://x.com/kuzmenko_dmytro"><i class="fa-brands fa-x-twitter"></i> X</a>
           </div>
+          <div id="email-reveal" class="email-reveal" hidden></div>
         </div>
 
       </div>
@@ -751,6 +770,26 @@ author = {Dmytro Kuzmenko and Nadiya Shvai},
 
     box.style.display = (box.style.display === "block") ? "none" : "block";
   });
+  const emailToggle = document.querySelector(".email-toggle");
+  const emailReveal = document.getElementById("email-reveal");
+
+  if (emailToggle && emailReveal) {
+    emailToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const isHidden = emailReveal.hasAttribute("hidden");
+      if (isHidden) {
+        const user = emailToggle.dataset.user || "";
+        const domain = emailToggle.dataset.domain || "";
+        emailReveal.textContent = `${user} at ${domain}`;
+        emailReveal.removeAttribute("hidden");
+        emailToggle.setAttribute("aria-expanded", "true");
+      } else {
+        emailReveal.setAttribute("hidden", "");
+        emailToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
   </script>
 
 
