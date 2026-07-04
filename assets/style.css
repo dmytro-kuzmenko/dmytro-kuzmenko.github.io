@@ -412,6 +412,17 @@ li{ margin: 6px 0; color: var(--muted); }
 }
 .info-box p{ margin: 8px auto; max-width: 480px; }
 
+.cv-embed{
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.cv-embed embed{ display: block; border: 0; }
+@media (max-width: 640px){
+  .cv-embed{ display: none; }
+}
+
 /* Footer */
 footer{
   padding-top: 24px;
