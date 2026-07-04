@@ -393,9 +393,7 @@ li{ margin: 6px 0; color: var(--muted); }
 .aside-photo{
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: center 65%;
+  height: auto;
 }
 .aside-note p{
   margin: 0;
