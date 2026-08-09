@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title>Dmytro Kuzmenko</title>
   <meta name="description" content="Dmytro Kuzmenko — researcher in robotics, machine learning, and human-robot interaction. PhD Candidate at NaUKMA, Visiting PhD Student at AIRlab UniTo, Italy." />
   <link rel="canonical" href="https://dmytro-kuzmenko.github.io/" />
@@ -80,8 +81,8 @@
           <a href="#service">Service</a>
           <a href="#teaching">Teaching</a>
         </div>
-        <button id="theme-toggle" class="theme-btn" title="Theme: System" aria-label="Toggle theme">
-          <i class="fa-solid fa-circle-half-stroke"></i>
+        <button id="theme-toggle" class="theme-btn" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+          <i class="fa-solid fa-sun"></i>
         </button>
         <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
           <i class="fa-solid fa-bars"></i>
@@ -139,7 +140,7 @@
         <ul>
           <li>[Aug 2026]: My students' papers were accepted to <a href="https://emr-workshop.github.io/" target="_blank" rel="noopener">EMR</a> and <a href="https://curateddata.github.io/" target="_blank" rel="noopener">CDEL</a> workshops at ECCV 2026!</li>
           <li>[Jul 2026]: My first students' papers were accepted to MILE workshop at RO-MAN 2026!</li>
-          <li>[Jul 2026]: My <a href="https://www.ukma.edu.ua/index.php/one-time-spetsializovani-vr-phd/6048-razova-spetsializovana-vchena-rada-phd-16404-122-09-07-2026-93-kuzmenka-d-o">PhD defense committee</a> is officially announced!</li>
+          <li>[Jul 2026]: My <a href="https://www.ukma.edu.ua/index.php/one-time-spetsializovani-vr-phd/6048-razova-spetsializovana-vchena-rada-phd-16404-122-09-07-2026-93-kuzmenka-d-o" target="_blank" rel="noopener">PhD defense committee</a> is officially announced!</li>
           <li>[Apr 2026]: I presented my HRI paper at <a href="https://comete.di.unito.it/" target="_blank" rel="noopener">COMETE Workshop</a> at UniTo!</li>
           <li>[Feb 2026]: I joined <a href="https://airlab.di.unito.it/" target="_blank" rel="noopener">AIRlab</a> as a visiting PhD student to work on assistive and helpful HRI in Torino!</li>
           <li>[Feb 2026]: <a href="https://authors.elsevier.com/a/1marD3INukZw26" target="_blank" rel="noopener">MoIRA</a> has been accepted to <a href="https://www.sciencedirect.com/journal/neurocomputing" target="_blank" rel="noopener">Neurocomputing</a>!</li>
@@ -394,118 +395,7 @@ author = {Dmytro Kuzmenko and Nadiya Shvai},
   <script data-goatcounter="https://dkuzmenko.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
-  <!-- Theme toggle -->
-  <script>
-  (function() {
-    const THEMES = ['system', 'light', 'dark'];
-    const ICONS  = { system: 'fa-circle-half-stroke', light: 'fa-sun', dark: 'fa-moon' };
-
-    function applyTheme(theme) {
-      if (theme === 'system') {
-        document.documentElement.removeAttribute('data-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', theme);
-      }
-      localStorage.setItem('theme', theme);
-      const btn = document.getElementById('theme-toggle');
-      if (btn) {
-        btn.querySelector('i').className = 'fa-solid ' + ICONS[theme];
-        btn.title = 'Theme: ' + theme.charAt(0).toUpperCase() + theme.slice(1);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      applyTheme(localStorage.getItem('theme') || 'system');
-      document.getElementById('theme-toggle').addEventListener('click', function() {
-        const current = localStorage.getItem('theme') || 'system';
-        applyTheme(THEMES[(THEMES.indexOf(current) + 1) % THEMES.length]);
-      });
-    });
-  })();
-  </script>
-
-  <!-- Mobile nav toggle -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
-    if (!toggle || !links) return;
-    toggle.addEventListener('click', function() {
-      const isOpen = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    links.querySelectorAll('a').forEach(function(a) {
-      a.addEventListener('click', function() {
-        links.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  });
-  </script>
-
-  <!-- Active nav on scroll -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-right a[href^="#"]');
-
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          navLinks.forEach(function(link) {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-          });
-        }
-      });
-    }, { rootMargin: '-10% 0px -80% 0px' });
-
-    sections.forEach(function(s) { observer.observe(s); });
-  });
-  </script>
-
-  <!-- Bib toggle + email reveal -->
-  <script>
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".bib-toggle");
-    if (!btn) return;
-
-    const id = btn.dataset.bibId;
-    const box = document.getElementById(id);
-    if (!box) return;
-
-    document.querySelectorAll(".bib-box").forEach(b => {
-      if (b !== box) b.style.display = "none";
-    });
-    document.querySelectorAll(".bib-toggle").forEach(b => {
-      if (b !== btn) b.setAttribute("aria-expanded", "false");
-    });
-
-    const isOpen = box.style.display === "block";
-    box.style.display = isOpen ? "none" : "block";
-    btn.setAttribute("aria-expanded", isOpen ? "false" : "true");
-  });
-
-  const emailToggle = document.querySelector(".email-toggle");
-  const emailReveal = document.getElementById("email-reveal");
-
-  if (emailToggle && emailReveal) {
-    emailToggle.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const isHidden = emailReveal.hasAttribute("hidden");
-      if (isHidden) {
-        const user = emailToggle.dataset.user || "";
-        const domain = emailToggle.dataset.domain || "";
-        emailReveal.textContent = `${user} at ${domain}`;
-        emailReveal.removeAttribute("hidden");
-        emailToggle.setAttribute("aria-expanded", "true");
-      } else {
-        emailReveal.setAttribute("hidden", "");
-        emailToggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-  </script>
+  <script src="assets/site.js" defer></script>
 
 </body>
 </html>

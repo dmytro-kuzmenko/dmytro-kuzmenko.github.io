@@ -5,6 +5,7 @@
   --line: #e7e7e7;
   --bg: #fff;
   --soft: #fafafa;
+  --nav-bg: rgba(255,255,255,0.92);
   --accent: #0b5fff;
   --accent2: #0a3fb8;
   --maxw: 980px;
@@ -15,12 +16,14 @@
   html:not([data-theme="light"]) {
     --text: #e8e8e8; --muted: #a0a0a0; --faint: #8a8a8a;
     --line: #2a2a2a; --bg: #111; --soft: #1c1c1c;
+    --nav-bg: rgba(17,17,17,0.92);
     --accent: #5b9bff; --accent2: #89b8ff;
   }
 }
 html[data-theme="dark"] {
   --text: #e8e8e8; --muted: #a0a0a0; --faint: #8a8a8a;
   --line: #2a2a2a; --bg: #111; --soft: #1c1c1c;
+  --nav-bg: rgba(17,17,17,0.92);
   --accent: #5b9bff; --accent2: #89b8ff;
 }
 *{ box-sizing: border-box; margin:0; padding:0; }
@@ -64,15 +67,11 @@ a:hover{ color: var(--accent2); text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 999;
-  background: rgba(255,255,255,0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
   transition: background 0.2s, border-color 0.2s;
 }
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .navbar { background: rgba(17,17,17,0.92); }
-}
-html[data-theme="dark"] .navbar { background: rgba(17,17,17,0.92); }
 .navbar-inner{
   max-width: var(--maxw);
   margin: 0 auto;
@@ -165,6 +164,11 @@ h1{
 }
 h2{
   font-size: 22px;
+  margin-bottom: 12px;
+}
+/* Page title on subpages: an <h1> sized close to a section heading */
+h1.page-title{
+  font-size: 24px;
   margin-bottom: 12px;
 }
 p{ margin: 10px 0; color: var(--muted); }
@@ -441,6 +445,8 @@ footer{
   font-size: 0.85rem;
   max-width: 100%;
 }
+
+.bib-box.open { display: block; }
 
 .bib-box pre {
   margin: 0;
