@@ -184,10 +184,11 @@ p{ margin: 10px 0; color: var(--muted); }
 }
 .pfp{
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: auto;
+  aspect-ratio: 1 / 1;
   border-radius: 12px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   border: 1px solid var(--line);
   background: var(--soft);
 }
