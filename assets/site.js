@@ -62,23 +62,43 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/* Active nav on scroll (only meaningful on pages with in-page section links) */
+/* Active nav on scroll (only meaningful on pages with in-page section links).
+   Active = the lowest row of sections whose top has passed a line 20% down the
+   viewport. Sections side by side share a top, so they light up together.
+   At the page bottom the last visible row wins, even if it never reached the line. */
 document.addEventListener('DOMContentLoaded', function() {
-  const sections = document.querySelectorAll('section[id]');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
   const navLinks = document.querySelectorAll('.nav-right a[href^="#"]');
   if (!sections.length || !navLinks.length) return;
 
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        navLinks.forEach(function(link) {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-10% 0px -80% 0px' });
+  function update() {
+    const vh = window.innerHeight;
+    const line = vh * 0.2;
+    const atBottom = vh + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const tops = sections.map(function(s) { return s.getBoundingClientRect().top; });
 
-  sections.forEach(function(s) { observer.observe(s); });
+    let rowTop = -Infinity;
+    tops.forEach(function(top) {
+      if ((top <= line || (atBottom && top < vh)) && top > rowTop) rowTop = top;
+    });
+
+    const active = new Set();
+    tops.forEach(function(top, i) {
+      if (Math.abs(top - rowTop) < 2) active.add('#' + sections[i].id);
+    });
+    navLinks.forEach(function(link) {
+      link.classList.toggle('active', active.has(link.getAttribute('href')));
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() { ticking = false; update(); });
+  }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 });
 
 /* BibTeX toggles — one open at a time */

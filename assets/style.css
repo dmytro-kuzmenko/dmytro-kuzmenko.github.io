@@ -150,6 +150,15 @@ a:hover{ color: var(--accent2); text-decoration: underline; }
   scroll-margin-top: 68px;
 }
 .section:last-child{ border-bottom: none; }
+/* Two sections side by side (Service | Teaching); stacks on narrow screens */
+.section-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid var(--line);
+}
+.section-row > .section{ border-bottom: none; }
+.section-row:last-child{ border-bottom: none; }
 .section-head{
   display: flex;
   align-items: baseline;
@@ -476,6 +485,8 @@ footer{
   .pfp{ width: 160px; height: 160px; border-radius: 12px; }
   .pub{ grid-template-columns: 1fr; }
   .pub img{ width: 100%; height: 180px; }
+  .section-row{ grid-template-columns: 1fr; gap: 0; }
+  .section-row > .section:first-child{ border-bottom: 1px solid var(--line); }
 }
 
 @media (max-width: 700px){
